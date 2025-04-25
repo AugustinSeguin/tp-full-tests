@@ -1,11 +1,24 @@
 # ReadMe
 
+
+## Installation des dépendances
+
+```sh
+npm install
+```
+
+## Run React project local
+
+```sh
+npm run dev
+```
+
 ## End 2 end
 
 ### Runs the end-to-end tests.
 
 ```sh
-npx playwright test
+npm run e2e
 ```
 
 ### Starts the interactive UI mode.
@@ -38,10 +51,16 @@ npx playwright test --debug
 npx playwright codegen
 ```
 
-### Unit Tests
+## Unit Tests
+
+### Run unit tests
 
 ```sh
 npm run test
 ```
 
+### Unit Tests watch mode
 
+```sh
+npx vitest run
+```
