@@ -28,9 +28,9 @@ test.describe("Check function of calcul hour ", () => {
     await expect(page.locator("#result")).toHaveText("Mortin");
   });
   test("moon=2, sun=2, earth=2", async ({ page }) => {
-    await page.locator("#moon").fill("1");
-    await page.locator("#sun").fill("1");
-    await page.locator("#earth").fill("1");
+    await page.locator("#moon").fill("2");
+    await page.locator("#sun").fill("2");
+    await page.locator("#earth").fill("2");
     await page.locator("button").click();
     await expect(page.locator("#result")).toHaveText("Nuight");
   });
