@@ -12,7 +12,13 @@
     "preview": "vite preview",
     "e2e": "npx playwright test"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx vitest run"
+    }
+  },
   "dependencies": {
+    "husky": "^9.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
