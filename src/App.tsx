@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { getHour, getTime } from "./modules/app";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [moon, setMoon] = useState<number>(0);
+  const [sun, setSun] = useState<number>(0);
+  const [earth, setEarth] = useState<number>(0);
+  const [result, setResult] = useState<string | null>(null);
+
+  const handleCalculate = () => {
+    const calculatedResult = getHour(moon, sun, earth);
+    const resultText = getTime(calculatedResult);
+    setResult(resultText);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <h1>Calculateur d'heure en Corodinsite Jupiterienne</h1>
+      <div className="inputs">
+        <div>
+          <label htmlFor="moon">Cadran de la lune :</label>
+          <input
+            id="moon"
+            type="number"
+            min="1"
+            max="2"
+            value={moon}
+            onChange={(e) => setMoon(Number(e.target.value))}
+          />
+        </div>
+        <div>
+          <label htmlFor="sun">Cadran du soleil :</label>
+          <input
+            id="sun"
+            type="number"
+            min="1"
+            max="2"
+            value={sun}
+            onChange={(e) => setSun(Number(e.target.value))}
+          />
+        </div>
+        <div>
+          <label htmlFor="earth">Cadran de la terre :</label>
+          <input
+            id="earth"
+            type="number"
+            min="1"
+            max="2"
+            value={earth}
+            onChange={(e) => setEarth(Number(e.target.value))}
+          />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      {earth !== 0 && sun !== 0 && moon !== 0 && (
+        <button onClick={handleCalculate}>Calculer</button>
+      )}
+
+      {result !== null && (
+        <div className="result">
+          <h2>Résultat :</h2>
+          <p id="result">{result}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
