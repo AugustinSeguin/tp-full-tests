@@ -63,7 +63,7 @@ test.describe("screenshot", () => {
       path: "tests-screenshot/screenshot-result-not-display.png",
     });
   });
-  test("screen shot App pass value of input 1 to 3 the value is 1", async ({
+  test("screen shot App pass value of inputs: the values of input juste be 1 or 2", async ({
     page,
   }) => {
     await page.locator("#moon").fill("3");
